@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<style>
+		tr{
+	  		text-align:left;
+	  	}
+	  	
+  </style> 
+  <title th:inline="text" >Weather Info for [[${cityInfo.name}]]</title> 
+</head>
+<body>
+	<div>
+		<h1 th:inline="text">[[${cityInfo.name}]]</h1>
+		<table>
+			<tr>
+				<th>ID</th>
+				<td th:inline="text">[[${cityInfo.id}]]</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td th:inline="text">[[${cityInfo.name}]]</td>
+			</tr>
+			<tr>
+				<th>Country Code</th>
+				<td th:inline="text">[[${cityInfo.countryCode}]]</td>
+			</tr>
+			<tr>
+				<th>Country Name</th>
+				<td th:inline="text">[[${cityInfo.countryName}]]</td>
+			</tr>
+			<tr>
+				<th>District</th>
+				<td th:inline="text">[[${cityInfo.district}]]</td>
+			</tr>
+			<tr>
+				<th>Population</th>
+				<td th:inline="text">[[${cityInfo.population}]]</td>
+			</tr>
+			<tr>
+				<th>Local Weather</th>
+				<td th:inline="text">[[${cityInfo.temp}]] &#8457;</td>
+			</tr>
+			<tr>
+				<th>Local Time</th>
+				<td th:inline="text">[[${cityInfo.time}]]</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<p th:inline="text">For a fabulous weekend get away for 2 to [[${cityInfo.name}]] sign up here.</p>
+		<form action="#" th:action="@{/cities/reservation}" th:object="${cityInfo}" method="post">
+			Email <input type="text" name="email"/><br />
+			
+			<input type="hidden" name="city" th:field="*{name}" />
+			
+			<input type="radio" name="level" value="Luxury" >
+			<label for="luxury">Luxury $1000</label><br />
+			<input type="radio" name="level" value="Very Good">
+			<label for="veryGood">Very Good $500</label><br />
+			<input type="radio" name="level" value="Good">
+			<label for="good">Good $350</label><br />
+			
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+</body>
+</html>
