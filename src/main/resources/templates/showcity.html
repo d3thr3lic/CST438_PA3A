@@ -50,7 +50,7 @@
 	<div>
 		<p th:inline="text">For a fabulous weekend get away for 2 to [[${cityInfo.name}]] sign up here.</p>
 		<form action="#" th:action="@{/cities/reservation}" th:object="${cityInfo}" method="post">
-			Email <input type="text" name="email"/><br />
+			Email <input type="email" name="email"/><br />
 			
 			<input type="hidden" name="city" th:field="*{name}" />
 			
